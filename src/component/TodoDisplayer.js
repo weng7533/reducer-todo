@@ -1,12 +1,24 @@
-import { initialState, reducer } from '../reducers/ToDoReducer';
-import React, { useReducer } from 'react';
+
+import React, { useContext } from 'react';
+import { ListContext } from '../Context/listContext';
 
 
 export default () => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+
+
+    const todos = useContext(ListContext);
+
 
     return (
-        <div>{state.item}</div>
+
+        <div>
+            {
+                todos.map((todo, key) => {
+                    return (<div key={key}>{todo.item}</div>)
+                })
+
+            }
+        </div>
 
     )
 }
