@@ -41,7 +41,6 @@ export const reducer = (state, action) => {
             };
         case 'TOGGLE':
             return {
-
                 Todolist:
                     state.Todolist.map((list, index) => {
                         if (list.item === action.payLoad.item) { list.completed = !list.completed }
@@ -49,6 +48,33 @@ export const reducer = (state, action) => {
                     })
 
             }
+
+        case 'CLEARCOMPLETED':
+            return {
+                Todolist:
+                    // state.Todolist.map((list, index) => {
+                    //     if (list.completed !== true) {
+                    //         return list;
+                    //     }
+                    // })
+                    state.Todolist.map((list, index) => {
+                        //     return {
+                        //         item: 'trying to clean',
+                        //         completed: false,
+                        //         id: 3892987589
+                        //     }
+                        // })
+
+                        if (list.completed == false) {
+                            return list;
+                        } else {
+                            return {}
+                        }
+
+                    })
+
+            }
+
 
 
         default:

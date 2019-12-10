@@ -33,8 +33,16 @@ export default () => {
         })
 
     }
-    console.log(state.Todolist[0].completed)
-    console.log(state.Todolist[1].completed)
+
+    const handleClearClick = (e) => {
+        dispatch({
+            type: 'CLEARCOMPLETED', payLoad: {
+                item: e.target.textContent
+            }
+        })
+    }
+
+
     const passingVariable = [state.Todolist, handleTodoClick]
 
     return (
@@ -43,7 +51,7 @@ export default () => {
                 <form onSubmit={handleSubmit}>
                     <input onChange={handleChange} value={input} />
                     <button onClick={handleAddToDoClick}>Add To Do</button>
-
+                    <button onClick={handleClearClick}>Clear completed</button>
                 </form>
 
                 <TodoDisplayer />
