@@ -13,8 +13,8 @@ export default () => {
 
         <div>
             {
-                todos.map((todo, key) => {
-                    return (<div key={key}>{todo.item}</div>)
+                todos[0].map((todo, index) => {
+                    return (<div className={todo.completed ? 'completed' : ''} key={index} id={3} value={todo.item} onClick={todos[1]}>{todo.item}</div>)
                 })
 
             }

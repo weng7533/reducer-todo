@@ -21,14 +21,29 @@ export default () => {
                 id: new Date()
             }
         })
-        console.log(state);
+
     }
+
+    const handleTodoClick = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: 'TOGGLE', payLoad: {
+                item: e.target.textContent
+            }
+        })
+
+    }
+    console.log(state.Todolist[0].completed)
+    console.log(state.Todolist[1].completed)
+    const passingVariable = [state.Todolist, handleTodoClick]
+
     return (
-        <ListContext.Provider value={state.Todolist}>
+        <ListContext.Provider value={passingVariable}>
             <>
                 <form onSubmit={handleSubmit}>
                     <input onChange={handleChange} value={input} />
                     <button onClick={handleAddToDoClick}>Add To Do</button>
+
                 </form>
 
                 <TodoDisplayer />
